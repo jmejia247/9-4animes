@@ -4,6 +4,10 @@ const app = express();
 const animesController = require('./controllers/animesController');
 
 app.use(express.json()) // parse incoming data
+// app.use((req, res, next) => {
+//     console.log("this code runs for every request")
+//     next()
+// })
 app.use('/animes', animesController);
 
 app.get('/', (req, res) => {

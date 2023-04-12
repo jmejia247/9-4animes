@@ -2,6 +2,20 @@ const express = require('express');
 const animes = express.Router();
 const animesArray = require('../models/animes')
 
+// validation
+const validateURL = (req, res, next) => {
+    if (
+        req.body.url.substring(0, 7) === "http://" ||
+        req.body.url.substring(0, 8) === "https://"
+      ) {
+        return next();
+      } else {
+        res
+          .status(400)
+          .send(`Oops, you forgot to start your url with http:// or https://`);
+      }
+}
+
 // index
 animes.get('/', (req, res) => {
     res.status(202).json({success: true, payload: animesArray})
@@ -26,8 +40,3 @@ animes.post('/', (req, res) => {
 })
 
 module.exports = animes;
-
-
-
-
-// curl -H "Content-Type: application/json" -X POST -d '{"title": "One Piece"}' localhost:8888/animes
