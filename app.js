@@ -1,5 +1,4 @@
 const express = require('express');
-const animes = require('./controllers/animesController');
 const app = express();
 const animesController = require('./controllers/animesController');
 
@@ -8,7 +7,9 @@ app.use(express.json()) // parse incoming data
 //     console.log("this code runs for every request")
 //     next()
 // })
-app.use('/animes', animesController);
+
+app.use('/api/animes', animesController);
+// app.use('/comics', comicsController)
 
 app.get('/', (req, res) => {
     res.send("Welcome to the best Anime site in the world");
