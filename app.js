@@ -8,7 +8,7 @@ app.use(express.json()) // parse incoming data
 //     next()
 // })
 
-app.use('/api/animes', animesController);
+app.use('/animes', animesController);
 // app.use('/comics', comicsController)
 
 app.get('/', (req, res) => {
