@@ -8,6 +8,8 @@ CREATE DATABASE animes_dev;
 \c animes_dev;
 
 -- step 4 blueprint out any tables we need
+DROP TABLE IF EXISTS anime;
+
 CREATE TABLE anime (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL, 
